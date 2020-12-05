@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/logo.png" sizes="64x64">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reproductor Music</title>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <button onclick="playVid()" type="button">Play Music</button>
+        <button onclick="pauseVid()" type="button">Pause Music</button><br>
+        <h1>Eunice T.V. Music</h1>
+        <br>
+        <img src="images/musica1.gif" alt="">
+        <br>
+        <br>
+        <script>
+            function cambiarTrack(track) {
+                var path = track.getAttribute("path")
+                viejo_audio = document.getElementById("reproductor")
+                audio_padre = viejo_audio.parentNode
+                audio_padre.removeChild(viejo_audio)
+                nuevo_audio = document.createElement("audio")
+                nuevo_audio.setAttribute("id", "reproductor")
+                nuevo_audio.setAttribute("controls", "controls")
+                nuevo_audio.setAttribute("autoplay", "autoplay")
+                source = document.createElement("source")
+                source.setAttribute("src", path)
+                source.setAttribute("type", "audio/mpeg")
+                source.setAttribute("id", "reproductorSource")
+                nuevo_audio.appendChild(source)
+                audio_padre.appendChild(nuevo_audio)
+            }
+
+            function cargarReproductor() {
+                var select = document.getElementById("selectTrack")
+                var path = select.options[0].getAttribute("path")
+                nuevo_audio = document.createElement("audio")
+                nuevo_audio.setAttribute("id", "reproductor")
+                nuevo_audio.setAttribute("controls", "controls")
+                source = document.createElement("source")
+                source.setAttribute("src", "path")
+                source.setAttribute("type", "audio/mpeg")
+                source.setAttribute("id", "reproductorSource")
+                nuevo_audio.appendChild(source)
+                padre = document.getElementById("reproductorBox")
+                padre.appendChild(nuevo_audio)
+            }
+        </script>
+
+        <div id="reproductorBox">
+            <select id="selectTrack" multiple onchange="cambiarTrack(this.options[this.selectedIndex]);">
+        <option path="lista_music\New Wine - En Alta Voz  Encuentranos Espritu Santo.mp3">En Alta Voz</option>
+        <option path="lista_music\Abner Himely - Hoy Vere Su Gloria.mp3">Hoy Veré su Gloria</option>
+        <option path="lista_music\EN EL NOMBRE DE JESUS - Ingrid Rosario - LETRA.mp3">En el Nombre De Jesús</option>
+        <option path="lista_music\A DONDE IRE JEHOVA SIN TI 2019 2dJwyjcKrlc.mp3">A Donde Iré Jehova Sin Ti</option>
+        <option path="lista_music\T - Dariann Gonzlez Video Official.mp3">Tu Darian Gonzalez</option>
+        <option path="lista_music\Vasija Quebrantada - Felixis Falcn Video Lyrics Oficial.mp3">Vasija Quebrantada</option>
+            </select><br><br>
+        </div>
+
+        <script>
+            cargarReproductor();
+        </script>
+
+        <script>
+            var vid = document.getElementById("selectTrack");
+
+            function playVid() {
+                vid.play();
+            }
+
+            function pauseVid() {
+                vid.pause();
+            }
+        </script>
+
+    </div>
+
+
+</body>
+
+</html>
